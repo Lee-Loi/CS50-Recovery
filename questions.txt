@@ -1,0 +1,60 @@
+0.  BMP 32 bits, 4,294,967,296 colours.
+    GIF 8 bits, 256 colours.
+    JPEG 24 bits, over 16 million possible colours.
+    PNG 24 bits, over 16 million possible colours.
+1.  GIF
+2.  With Loseless compression, every bit of data is is kept in the file after
+    it's uncompressed. With lossy compression, it reduces file sizes by deleting
+    data that's redundant or that the user may not notice. Lossy is used a lot
+    in video and audio files aswell as JPEGS where as Loseless compression would
+    be used in text or spreadsheet files as well as GIF and PNG images.
+3.  JPEG
+4.  When a file is deleted on a FAT system, the OS changes the first character
+    of the file in the directory to signal the files been deleted and that the
+    directory can be recycled. The system then moves all of the files FAT
+    clusters to the HDD's list of free clusters that would allow the user to
+    write new data. Until the clusters are overwritten, the actual file data is
+    never touched or erased permanetnly. 
+5.  You can delete a file securely by overwritting the file with  with ASCII NUL
+    bytes (zeroes). You would have to make sure you overwrite every addressable
+    block to ensure sanitization. You can download software to perform this task
+    such as Cyberscrub or DataScrubber.
+6.  Stdint.h is a header file that provides a set of typedefs that specifiy
+    exact-width integer types, together with defined maxmium and minimum values
+    for each type using macros. 
+7.  It allows you to use data in a particular way. It allows anyone to see what
+    type of data you expected to compile, uint8_t is an unsigned integer with 8
+    bytes.
+8.  (8 bits = 1 byte)
+    A BYTE is 1 byte.
+    A DWORD is 4 bytes.
+    A LONG is 4 bytes.
+    A WORD is 2 bytes.
+9.  The first two bytes must be 0x4d42 as the first two bytes in a BMP is bfType
+    and 0x4d42 is the magic number that identifies the file type as a BMP.
+10. BfSize is the size in bytes, of the bitmap file.
+    BiSize is the number of bytes required by the structure, or the number of
+    bytes of the actual BGR image including padding.
+11. If biHeight is negative: the bitmap is a top-down DIB and its origin is the
+    upper-left corner. If top-down, biCompression must be either BI_RGB or
+    BI_BITFIELDS. Top-down DIBs cannot be compressed.
+12. The biBitCount field of BITMAPINFOHEADER determines the number of bits
+    that define each pixel and the maximum number of colors in the bitmap. 
+13. fopen may reurn NULL in copy.c:37 if there was an error writing the output
+    file and will return an error message and return 3. Reasons may include
+    not enough hard drive space.
+14. The function fread() reads nmemb elements of data, each size bytes long,
+    from the stream pointed to by the stream, storing them in a location given
+    by ptr. 
+    I think because there's only 1 Bitmap info header, fread  only reads 
+    sizeof(BITMAPINFOHEADER) once.
+15. 3 % 4 = 1
+16. Fseek function sets the file position indicator for the stream pointed to by
+    stream. The new position, measured in bytes, is obtained by adding offset
+    bytes to the position specified by whence. In copy.c, if there's any
+    padding, it is skipped over.
+17. If whence is set to SEEK_CUR, the offset is relative to the current position
+    indicator. A successful call to the fseek() function clears the end-of-file
+    indicator for the stream and undoes any effects of the ungetc(3) function
+    on the same stream.
+18. Rick Astley.
